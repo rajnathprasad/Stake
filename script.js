@@ -97,21 +97,21 @@ function continuePlaying() {
 
 function reveal(currentBox) {
     if (play) {
-        playTimes+=1;
         let betValue = parseFloat(document.querySelector(".moneyInput").value);
         let bombValue = parseFloat(document.querySelector(".bombsNumber").value);
         let currentValueElement = document.querySelector(".currentValue");
         if (betValue && betValue >= 0) {
+            playTimes+=1;
             setBombs();
             const wonAudio = new Audio('audios/won.mp3');
             const loseAudio = new Audio('audios/lose.mp3');
             if (contents[currentBox] === "x") {
-                wonAudio.play();
+                // wonAudio.play();
                 currentValueElement.textContent = betValue * bombValue;
                 document.querySelector(".outerBox").style.backgroundColor =
                     "rgba(0, 255, 0, 0.5)";
             } else {
-                loseAudio.play();
+                // loseAudio.play();
                 currentValueElement.textContent = betValue / bombValue;
                 document.querySelector(".outerBox").style.backgroundColor =
                     "rgba(255, 0, 0, 0.5)";
@@ -136,7 +136,8 @@ function reveal(currentBox) {
             alert("Please bet some money!");
         }
     }
-    if(playTimes===0){
+    if(playTimes!=0){
         play = false;
     }
+    
 }
